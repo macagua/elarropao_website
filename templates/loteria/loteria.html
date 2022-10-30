@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+
+{% block head_title %}::: El Arrop@o en Linea ::: Bienvenid@ al unico y mejor sitio de Datos y Aciertos:::{% endblock %}
+
+{% block extra_head %}
+    <style type="text/css">
+	body {
+	    background: url("/site_media/img/fondo.gif") repeat;
+	    font-size: 10pt;
+	    font-weight:bold
+	}
+        #wrapper {
+                text-align: left;
+                margin: 0px auto;
+                padding: 0px;
+                border:0;
+                width: 900px;
+                /*background: url("/path/to/your/background_cols.gif") repeat;*/
+        }
+        
+        #header {
+                /*margin: 0 0 15px 0;*/
+                background-color: #FFF;
+
+        }
+        
+        #side-a {
+                float: left;
+                width: 130px;
+                background-color: #FFF;
+                height: 5000px;
+        }
+        
+        #side-b {
+                float: right;
+                width: 130px;
+                background-color: #FFF;
+                height: 5000px;
+        }
+        
+        #content { 
+                float: left;
+                width: 640px;
+                background-color: #FFF;
+                height: 5000px;
+        }
+        
+        #footer {
+                clear: both;
+                background-color: #FFF;
+                text-align: center;
+        }
+        
+        #content_fecha {
+            text-align: center;
+            padding-bottom: 20px;
+            padding-top: 20px;
+        }
+        
+        #content_resultados {
+            /*text-align: center;*/
+        }
+        
+	#content_enlace {
+            text-align: center;
+            padding-bottom: 20px;
+            padding-top: 20px;
+        }
+	
+	.table {
+            border: solid 1px;
+	    width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            border-collapse: collapse;
+	    background-color: #f9ffd2;
+	}
+
+	.table_kino {
+            border: solid 1px;
+	    width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            border-collapse: collapse;
+	    background-color: #f9ffd2;
+	}
+	.table1 {
+            border: none;
+            width: 500px;
+            /*margin-left: auto;*/
+            /*margin-right: auto;*/
+            border-collapse: collapse;
+	}
+	
+        td {
+            border: solid 1px;
+	    border-color: #804b00;
+        }
+	
+	.center_text {
+	    text-align: center;
+	}
+	
+	.td_255 {
+	    width: 255px;
+	    padding-left: 20px;
+	}
+	
+	.td_166 {
+	    width: 166px;
+	}
+	
+	.td_80 {
+	    width: 80px;
+	}
+
+	
+	.titulo_sorteo{
+	    background-color: #ff0000;
+	    color: #fff;
+	}
+	
+	.titulo_resultado {
+	    background-color: #ffe84c;
+	}
+    </style>
+{% endblock %}
+
+{% block body %}
+
+
+
+
+<div id="wrapper">
+
+	{% include "cabecera.html" %}        
+
+	<div id="container">
+		
+		{% include "derecha.html"%}
+<!-- -->		
+		<div id="content">
+                    <div id="content_fecha">
+                        Bienvenido, Hoy es: {{ fecha|date:"l, d \de F \de Y, P" }}
+                    </div>
+
+                    <div id="content_enlace">
+                        {{ enlace|safe }}
+                    </div>
+                    
+		    <div id="content_noticias">
+			{{ noticias|safe }}
+		    </div>
+		
+                    <div id="content_resultados">
+			{{ resultados|safe }}
+                    </div>
+		    
+		</div>
+		
+		{% include "izquierda.html"%}
+<!-- -->
+	</div>
+        
+	{% include "pie.html" %}
+	
+</div>
+ 
+{% endblock %}

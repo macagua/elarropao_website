@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd"
+    >
+<html lang="en">
+<head>
+    <title>::: El Arrop@o en Linea ::: Resultados</title>
+    <style type="text/css">
+
+	table {
+            border: solid 1px;
+	    background-color: #f9ffd2;
+            width: 350px;
+            margin-left: auto;
+            margin-right: auto;
+            border-collapse: collapse;
+	}
+	
+        td {
+            border: solid 1px;
+	    border-color: #804b00;
+            text-align: center;
+        }
+	
+	.center_text {
+	    text-align: center;
+	}
+	
+	.titulo_sorteo{
+	    background-color: #ff0000;
+	    color: #fff;
+	}
+	
+	.titulo_resultado {
+	    background-color: #ffe84c;
+	}
+    </style>
+
+</head>
+<body>
+        <br />
+        <br />
+        {% if noresultado %}
+            <div class="center_text">
+                <br />
+                <br />                
+                <br />
+                <br />                
+                <label>No Existen Resultados</label>
+            </div>
+        {% else %}
+            <table id="">
+                <tr class="titulo_sorteo">
+                    <td colspan="3">
+                        {{ loteria}} - {{ sorteo }}
+                    </td>
+                </tr>
+                <tr class="titulo_resultado">
+                    <td>Fecha</td>
+                    <td>Hora</td>
+                    <td>N&#250;mero</td>
+                </tr>
+            {% for resultado in resultados %}
+                <tr>
+                    <td>{{ resultado.fecha|date:"d-m-Y" }}</td>
+                    <td>{{ resultado.sorteo.hora|time:"P" }}</td>
+                    <td>{{ resultado.numero }} {% ifnotequal resultado.signo.nombre "Ninguno" %} - {{ resultado.signo }} {% endifnotequal %} {% ifnotequal resultado.animalito.nombre "Ninguno" %} - {{ resultado.animalito }} {% endifnotequal %}</td>
+                </tr>
+            {% endfor %}        
+            </table>
+        {% endif %}
+
+</body>
+</html>

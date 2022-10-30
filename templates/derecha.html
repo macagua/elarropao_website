@@ -1,0 +1,12 @@
+		<div id="side-a">
+                    {% for pd in publicidad_derecha %}
+			{% ifequal pd.tipo 1 %}
+			    <script type="text/javascript" >
+				AC_FL_RunContent('codebase','http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0','width','130','height','300','align','middle','src','{{ pd.archivo.url }}','quality','high','name','{{ pd.archivo.url }}','allowscriptaccess','sameDomain','pluginspage','http://www.macromedia.com/go/getflashplayer','movie','{{ pd.archivo.url }}' );
+			    </script> 
+			{% endifequal %}
+			{% ifequal pd.tipo 2 %}
+			    <img src="{{ pd.archivo.url }}" />
+			{% endifequal %}
+                    {% endfor%}
+		</div>

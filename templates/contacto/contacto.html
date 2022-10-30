@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block head_title %}::: El Arrop@o en Linea ::: Bienvenid@ al unico y mejor sitio de Datos y Aciertos:::{% endblock %}
+
+{% block extra_head %}
+    <style type="text/css">
+	body {
+	    background: url("/site_media/img/fondo.gif") repeat; 
+	}
+        #wrapper {
+                text-align: left;
+                margin: 0px auto;
+                padding: 0px;
+                border:0;
+                width: 900px;
+
+        }
+        
+        #header {
+                /*margin: 0 0 15px 0;*/
+                background-color: #FFF;
+
+        }
+        
+        #side-a {
+                float: left;
+                width: 130px;
+                background-color: #FFF;
+                height: 5000px;
+        }
+        
+        #side-b {
+                float: right;
+                width: 130px;
+                background-color: #FFF;
+                height: 5000px;
+        }
+        
+        #content { 
+                float: left;
+                width: 640px;
+                background-color: #FFF;
+                height: 5000px;
+        }
+        
+        #footer {
+                clear: both;
+                background-color: #FFF;
+                text-align: center;
+        }
+        
+	table {
+	    width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+	}
+
+	.center_text {
+	    text-align: center;
+	}
+
+        ul.errorlist {
+            margin: 0;
+            padding: 0;
+            width: 150px;
+        }
+        .errorlist li {
+            background-color: red;
+            color: white;
+            display: block;
+            font-size: 10px;
+            margin: 0 0 3px;
+            padding: 4px 5px;
+        }
+
+    </style>
+{% endblock %}
+
+{% block body %}
+
+
+
+
+<div id="wrapper">
+    
+        {% include "cabecera.html" %}
+	
+        <div id="container">
+                
+                {% include "derecha.html"%}
+                
+		<div id="content">
+                    <div id="content_contacto">
+                        <br />
+                        <h3 class="center_text"><label for="">Formulario de Contacto</label></h3>
+			<br />
+                        <form id="contacto" action="." method="POST">
+                            <table>
+                                {{ form.as_table }}    
+                                <tr>
+                                    <td colspan="2" class="center_text"><input type="submit" value="Enviar"/></td>
+                                </tr>
+                            </table>
+                            
+                        </form>
+                    </div>
+		    
+		</div>
+                
+                {% include "izquierda.html" %}
+            
+	</div>
+        
+        {% include "pie.html" %}
+        
+</div>
+ 
+{% endblock %}

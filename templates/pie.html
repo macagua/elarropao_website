@@ -1,0 +1,18 @@
+	<div id="footer">
+	    {% load hitcount_tags %}
+	    
+	    {% if visitas_site %}
+		<script type="text/javascript"><!--
+		    $(document).ready(function() {
+			{% get_hit_count_javascript for visitas_site %}
+		    });
+		--></script>
+
+		<label for=""><h2>Esta página ha sido visitada {% get_hit_count for visitas_site %} veces</h2></label>
+		<br />
+		<br />
+	    {% endif %}
+
+	    <label>Copyright &copy </label><a href="http://www.elarropao.com">http://www.elarropao.com</a> 
+	</div>
+    

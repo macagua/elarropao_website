@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+
+{% block head_title %}{{ flatpage.title }}{% endblock %}
+
+{% block extra_head %}
+    <style type="text/css">
+        body {
+	    background: url("/site_media/img/fondo.gif") repeat; 
+	}
+        
+        #wrapper {
+                text-align: left;
+                margin: 0px auto;
+                padding: 0px;
+                border:0;
+                width: 900px;
+                /*background: url("/path/to/your/background_cols.gif") repeat;*/
+        }
+        
+        #header {
+                /*margin: 0 0 15px 0;*/
+                background-color: #FFF;
+
+        }
+        
+        #side-a {
+                float: left;
+                width: 130px;
+                background-color: #FFF;
+                height: 5000px;
+        }
+        
+        #side-b {
+                float: right;
+                width: 130px;
+                background-color: #FFF;
+                height: 5000px;
+        }
+        
+        #content { 
+                float: left;
+                width: 640px;
+                background-color: #FFF;
+                height: 5000px;
+        }
+        
+        #footer {
+                clear: both;
+                background-color: #FFF;
+                text-align: center;
+        }
+        
+        #content_titulo {
+            text-align: center;
+            padding-bottom: 20px;
+            padding-top: 20px;
+        }
+        
+        #content_flatpage {
+            padding-left: 50px;
+            padding-right: 50px;
+            /*text-align: center;*/
+        }
+        
+	.table {
+            border: solid 1px;
+	    
+            width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            border-collapse: collapse;
+	}
+	
+	.table1 {
+            border: none;
+            width: 500px;
+            /*margin-left: auto;*/
+            /*margin-right: auto;*/
+            border-collapse: collapse;
+	}
+	
+        td {
+            border: solid 1px;
+	    border-color: #009900;
+        }
+	
+	.center_text {
+	    text-align: center;
+	}
+	
+	.td_255 {
+	    width: 255px;
+	    padding-left: 20px;
+	}
+	
+	.td_166 {
+	    width: 166px;
+	}
+	
+	.titulo_sorteo{
+	    background-color: #ff0000;
+	    color: #fff;
+	}
+	
+	.titulo_resultado {
+	    background-color: #ffcc00;
+	}
+    </style>
+{% endblock %}
+
+{% block body %}
+
+
+
+
+<div id="wrapper">
+	<div id="header">
+	    <script type="text/javascript" >
+		AC_FL_RunContent('codebase','http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0','width','900','height','160','align','middle','src','/site_media/swf/barraca.swf','quality','high','name','/site_media/swf/barraca.swf','allowscriptaccess','sameDomain','pluginspage','http://www.macromedia.com/go/getflashplayer','movie','/site_media/swf/barraca.swf' );
+	    </script>
+	</div>
+
+	<div id="container">
+		<div id="side-a">
+                    {% for pd in flatpage.publicidad_derecha %}
+			{% ifequal pd.tipo 1 %}
+			    <script type="text/javascript" >
+				AC_FL_RunContent('codebase','http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0','width','130','height','300','align','middle','src','{{ pd.archivo.url }}','quality','high','name','{{ pd.archivo.url }}','allowscriptaccess','sameDomain','pluginspage','http://www.macromedia.com/go/getflashplayer','movie','{{ pd.archivo.url }}' );
+			    </script> 
+			{% endifequal %}
+			{% ifequal pd.tipo 2 %}
+			    <img src="{{ pd.archivo.url }}" />
+			{% endifequal %}
+                    {% endfor%}
+		</div>
+		
+		<div id="content">
+                    <div id="content_titulo">
+                        <h3>{{ flatpage.title }}</h3>
+                    </div>
+                    
+                    <div id="content_flatpage">
+                        {{ flatpage.content }}
+                    </div>
+		</div>
+		
+		<div id="side-b">
+                    {% for pi in flatpage.publicidad_izquierda %}
+			{% ifequal pi.tipo 1 %}
+			    <script type="text/javascript" >
+				AC_FL_RunContent('codebase','http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0','width','130','height','300','align','middle','src','{{ pi.archivo.url }}','quality','high','name','{{ pi.archivo.url }}','allowscriptaccess','sameDomain','pluginspage','http://www.macromedia.com/go/getflashplayer','movie','{{ pi.archivo.url }}' );
+			    </script> 
+			{% endifequal %}
+			{% ifequal pi.tipo 2 %}
+			    <img src="{{ pi.archivo.url }}" />
+			{% endifequal %}
+                    {% endfor%}
+		</div>
+	</div>
+	<div id="footer">
+	    <label>Copyright &copy </label><a href="www.elarropao.com">www.elarropao.com</a>
+	</div>
+</div>
+ 
+{% endblock %}
